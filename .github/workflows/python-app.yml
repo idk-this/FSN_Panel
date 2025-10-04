@@ -1,0 +1,60 @@
+name: FSN Panel Build
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest pyinstaller
+        pip install -r requirements.txt
+
+    # - name: Run tests with pytest
+    #   run: pytest
+
+    - name: Build executable with PyInstaller
+      run: |
+        pyinstaller --noconfirm --onefile --windowed --uac-admin --name FSN --icon Icon1.ico --add-data "Icon1.ico;." "main.py"
+
+    - name: Create ZIP package with empty folder
+      run: |
+        $zipPath = "FSN_Panel.zip"
+        if (Test-Path $zipPath) { Remove-Item $zipPath }
+
+        Add-Type -AssemblyName System.IO.Compression.FileSystem
+
+        # Создаём архив
+        [System.IO.Compression.ZipFile]::Open($zipPath, [System.IO.Compression.ZipArchiveMode]::Create).Dispose()
+
+        # Добавляем существующие файлы и папки
+        Compress-Archive -Path dist\FSN.exe, settings, BES, SteamRouteTool -DestinationPath $zipPath -Update
+
+        # Добавляем пустую папку MaFiles
+        $zip = [System.IO.Compression.ZipFile]::Open($zipPath, [System.IO.Compression.ZipArchiveMode]::Update)
+        $zip.CreateEntry("MaFiles/") | Out-Null
+        $zip.Dispose()
+
+    - name: Upload release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: FSN_Panel.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

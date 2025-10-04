@@ -1,0 +1,11 @@
+{
+    "SteamPath": "C:\\Program Files (x86)\\Steam\\steam.exe",
+    "CS2Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Counter-Strike Global Offensive",
+    "SteamArg": "-nofriendsui -vgui -noreactlogin -noverifyfiles -nobootstrapupdate -skipinitialbootstrap -norepairfiles -overridepackageurl -disable-winh264",
+    "CS2Arg": "-condebug -conclearlog +exec fsn.cfg -language english -windowed -allowmultiple -noborder -swapcores -noqueuedload -vrdisable -windowed -w 383 -h 280 -nopreload -limitvsconst -softparticlesdefaultoff -nohltv -noaafonts -nosound -novid +violence_hblood 0 +sethdmodels 0 +mat_disable_fancy_blending 1 +r_dynamic 0 +engine_no_focus_sleep 120 -nojoy",
+    "DisableOverlay": 0,
+    "RemoveBackground": 1,
+    "VendorID": 0,
+    "DeviceID": 0,
+    "AVASTSANDBOX_FOLDER": "C:\\avast! sandbox"
+}
