@@ -5,6 +5,7 @@ __pycache__/
 
 #some data
 logpass.txt
+runtime.json
 **/[Mm][Aa][Ff][Ii][Ll][Ee][Ss]/
 *.[Mm][Aa][Ff][Ii][Ll][Ee]
 # C extensions
