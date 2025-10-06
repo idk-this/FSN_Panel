@@ -23,7 +23,7 @@ customtkinter.set_default_color_theme("blue")
 class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
-        self.title("FSN not Autofarm panel | v.0.2.0")
+        self.title("FSN not Autofarm panel | v.0.2.1")
         self.geometry("1100x580")
         if hasattr(sys, "_MEIPASS"):
             base_path = Path(sys._MEIPASS)

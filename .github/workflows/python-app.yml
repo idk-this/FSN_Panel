@@ -34,23 +34,30 @@ jobs:
       run: |
         pyinstaller --noconfirm --onefile --windowed --uac-admin --name FSN --icon Icon1.ico --add-data "Icon1.ico;." "main.py"
 
-    - name: Create ZIP package with empty folder
+    - name: Create ZIP package
       run: |
         $zipPath = "FSN_Panel.zip"
         if (Test-Path $zipPath) { Remove-Item $zipPath }
 
         Add-Type -AssemblyName System.IO.Compression.FileSystem
 
+        # Создаём файл logpass.txt
+        $logpassFile = "logpass.txt"
+        "login:password" | Out-File -FilePath $logpassFile -Encoding UTF8
+
         # Создаём архив
         [System.IO.Compression.ZipFile]::Open($zipPath, [System.IO.Compression.ZipArchiveMode]::Create).Dispose()
 
         # Добавляем существующие файлы и папки
-        Compress-Archive -Path dist\FSN.exe, settings, BES, SteamRouteTool -DestinationPath $zipPath -Update
+        Compress-Archive -Path dist\FSN.exe, settings, BES, SteamRouteTool, $logpassFile -DestinationPath $zipPath -Update
 
         # Добавляем пустую папку MaFiles
         $zip = [System.IO.Compression.ZipFile]::Open($zipPath, [System.IO.Compression.ZipArchiveMode]::Update)
         $zip.CreateEntry("MaFiles/") | Out-Null
         $zip.Dispose()
+
+        # Удаляем временный файл logpass.txt
+        Remove-Item $logpassFile
 
     - name: Upload release
       uses: softprops/action-gh-release@v2
