@@ -5,6 +5,8 @@
 Created in 12 hours using Chat GPT.
 
 ---
+> ⚠️ WARNING: If you're worried about a stealer, use the source code directly. I'm not responsible for your accounts, and if you're so stupid that all your accounts were stolen, don't blame me. All source code is open and publicly available.
+---
 
 ## 📌 Requirements
 
