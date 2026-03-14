@@ -43,9 +43,29 @@ python main.py
 ```
 
 ---
+## 🛠 Troubleshooting
 
+### Status colors change from yellow to white immediately
+**Issue:** When launching, account indicators briefly turn yellow and then revert to white without starting the game.
+
+**Solution:** Navigate to your Steam installation directory and completely delete the `userdata` folder.
+
+### Accounts or games fail to launch/accept
+**Issue:** The panel does not trigger the game client, or accounts do not start at all.
+**Solution:** The panel must be run with **Administrator privileges**.
+
+If you are running from source:
+1. Open **Command Prompt (CMD)** as **Administrator**.
+2. Navigate to your project directory:
+   ```bash
+   cd C:/path/to/FSN_Panel
+   ```
+3. Run the script:
+   ```bash
+   python main.py
+    ```
+---
 ## ⚙ Account Setup
-
 1. To add accounts, place your `maFiles` (optional) in the `mafiles` folder.
 2. Add logins and passwords in the `logpass.txt` file in the format:
 

@@ -5,7 +5,7 @@
     "CS2Arg": "-condebug -conclearlog +exec fsn.cfg -language english -windowed -allowmultiple -noborder -swapcores -noqueuedload -vrdisable -windowed -w 383 -h 280 -nopreload -limitvsconst -softparticlesdefaultoff -nohltv -noaafonts -nosound -novid +violence_hblood 0 +sethdmodels 0 +mat_disable_fancy_blending 1 +r_dynamic 0 +engine_no_focus_sleep 120 -nojoy",
     "DisableOverlay": 0,
     "RemoveBackground": 1,
-    "VendorID": 0,
-    "DeviceID": 0,
+    "VendorID": 4318,
+    "DeviceID": 7942,
     "AVASTSANDBOX_FOLDER": "C:\\avast! sandbox"
 }

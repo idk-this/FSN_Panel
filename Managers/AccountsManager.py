@@ -119,12 +119,12 @@ class AccountManager:
                 break
 
             try:
-                account.StartGame()  # запуск аккаунта
-                # После успешного запуска меняем цвет на зелёный
-                account.setColor("green")
-                account.MonitorCS2(interval=5)  # запускаем мониторинг CS2
+                if not account.StartGame():
+                    account.setColor("#DCE4EE")
+
             except Exception as e:
                 print(f"Ошибка запуска {account.login}: {e}")
                 account.KillSteamAndCS()
+
             finally:
                 self.accounts_start_queue.task_done()
